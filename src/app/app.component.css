@@ -1,0 +1,65 @@
+/* app id */
+#app {
+  padding: 40px 15px;
+  padding-top: 40px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+  padding-left: 15px;
+}
+/* end app id*/
+/* sidbar */
+#sidebar {
+  padding-right: 10px;
+}
+/* th styling */
+
+th {
+    text-align: left;
+}
+td, th {
+    padding: 0;
+    width: 25%;
+}
+
+/* end sidbar*/
+.divider {
+	padding-top: 15px;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+#invoice {
+  background: #fff;
+  border: 1px solid #D0D0D0;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #DDD;
+}
+/* every thingis ...*/
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert {
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert, .thumbnail {
+  margin-bottom: 20px;
+}
+
+/* every thingis ...*/

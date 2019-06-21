@@ -1,0 +1,219 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="app" class="container">
+<form [formGroup]="FormData" (ngSubmit)="onSubmit()">
+<div class="row">
+  <div class="col-sm-3">
+  <div class="card">
+  <div class="card-body">
+  <h5 class="card-title">Currency</h5>
+  <div class="form-group" formGroupName="currencys">
+  <select class="form-control" [(ngModel)]="currency" formControlName="code">
+    <option *ngFor="let currency of currencyies"
+					[value]="currency.id">
+      				{{currency.value}}</option>
+  </select>
+  </div>
+  <div class="form-group" >
+     <input type="checkbox" formControlName="uCurrency"><label for=""> unambiguous currency.</label>
+  </div>
+
+  </div>
+</div>
+
+
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Discount</h5>
+<div class="form-group" formGroupName="discountFormat">
+<select class="form-control" [(ngModel)]="discount" formControlName="key">
+  <option *ngFor="let discount of discounts"
+					[value]="discount.id">
+      				{{discount.key}}</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Shipping</h5>
+<div class="form-group" formGroupName="shippingFormat">
+<select class="form-control" [(ngModel)]="shipping" formControlName="key">
+  <option *ngFor="let shipping of shippings"
+					[id]="shipping.id" >
+      				{{shipping.key}}</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">TAX</h5>
+<div class="form-group" formGroupName="taxFormat">
+<select class="form-control" [(ngModel)]="tax" formControlName="key">
+  <option *ngFor="let tax of taxs"
+          [id]="tax.id" >
+              {{tax.key}}</option>
+</select>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-body">
+<button class="btn btn-primary"><i class="fa fa-download"></i> Download Your Invoice</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Saved Data</h5>
+<button mat-raised-button color="warn">Delete My Local Data</button>
+<p>
+Free Invoice Generator does not store any of your settings on its servers.Instead, all of your settings are saved to your browser through the LocalStorage mechanism. Clicking the above button will delete the data that Free Invoice Generator has saved to your computer so far. Note: the invoices are generated server-side where they are kept for up to 10 minutes before they are garbage-collected.
+</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Get Updates</h5>
+  <p>
+			Enter your e-mail address below if you'd like to receive updates whenever we launch a new feature!
+	</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+  <input type="text" placeholder="Enter your e-mail" style="width:90%">
+  <button mat-stroked-button>Subscripe!</button>
+</div>
+</div>
+
+
+  </div>
+
+  <div id="invoice" class="col-sm-9" >
+	<div role="alert" class="alert alert-warning hidden-in-pdf">
+		Everything below this point is editable. Click on things and go crazy!
+	</div>
+  <div formGroupName="labels">
+	<div class="row">
+		<div class="col-md-6">
+		  <input type="text" placeholder="From" formControlName="from">
+		  <textarea ></textarea>
+		</div>
+		<div class="col-md-6">
+		  <input type="text" placeholder="INVOICE" formControlName="title">
+		</div>
+	</div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table>
+        <tr>
+          <td><input type="text" placeholder="To" formControlName="to"></td>
+        </tr>
+        <tr>
+          <td><textarea></textarea></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table>
+        <tr>
+          <td><input type="text" placeholder="Invoice#"  style="width:100%"></td>
+          <td><input type="text" placeholder="INV-0001" formControlName="number" style="width:70%"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Invoice Date#" style="width:100%"></td>
+          <td><input type="text" placeholder="current date" formControlName="date"style="width:70%"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Due Date#" style="width:100%"></td>
+          <td><input type="text" placeholder="due date" formControlName="dueDate"style="width:70%"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-3">
+        <input type="text" placeholder="Item" style="width:120%">
+      </div>
+      <div class="col-md-3">
+        <input type="text" placeholder="HRS/QTY" style="width:85%">
+      </div>
+      <div class="col-md-2">
+        <input type="text" placeholder="Rate" style="width:85%">
+      </div>
+            <div class="col-md-1">
+        <input type="text" placeholder="VAT" style="width:85%">
+      </div>
+      <div class="col-md-3">
+        <input type="text" placeholder="Amount" style="width:85%">
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">
+        <input type="text" placeholder="Item name/description" formControlName="description"style="width:120%">
+      </div>
+      <div class="col-md-3">
+        <input type="text" placeholder="0" formControlName="quantity" style="width:85%">
+      </div>
+      <div class="col-md-2">
+        <input type="text" placeholder="$0.00" formControlName="rate" style="width:85%">
+      </div>
+      <div class="col-md-1">
+        <input type="text" disabled="" placeholder="$0.00" formControlName="vat" style="width:85%">
+      </div>
+      <div class="col-md-3">
+        <input type="text" disabled="" placeholder="$0.00" formControlName="amount" style="width:85%">
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span> Add Item
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-4">
+      <table>
+        <tr>
+          <td><input type="text" placeholder="Subltotal"  style="width:90%"></td>
+          <td><input type="text" disabled="" placeholder="$0.00" style="width:50%"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Discount" style="width:90%"></td>
+          <td><input type="text" placeholder="$0.00" formControlName="discount" style="width:50%"></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Total" style="width:90%"></td>
+          <td><input type="text" disabled="" formControlName="total"  placeholder="$0.00" style="width:50%"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+	<div class="row">
+		<div class="col-md-12">
+		  <textarea placeholder="You can optionally enter any additional notes here..."></textarea>
+		</div>
+  </div>
+  </div>
+</div>
+</form>
+</div>

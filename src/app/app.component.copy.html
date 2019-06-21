@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-grid-list cols="4" gutterSize="20px" >
+    <mat-grid-tile colspan="1" rowspan="1" style="background-color: #f34">
+		<mat-card>
+			<mat-card-content>
+			<mat-card-title >Currency</mat-card-title>
+			<mat-divider></mat-divider>
+			<mat-form-field>
+				<mat-select [(ngModel)]="currency">
+					    <mat-option *ngFor="let currency of currencys" 
+					    [value]="currency.id">
+      						{{currency.viewValue}}
+    					</mat-option>
+				</mat-select>
+			</mat-form-field>
+			    <section>
+      				<mat-checkbox [(ngModel)]="unambiguous_currency">unambiguous currency.</mat-checkbox>
+    			</section>
+			</mat-card-content>
+		</mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3" rowspan="1" style="background-color: #444">
+
+    </mat-grid-tile>
+</mat-grid-list>
